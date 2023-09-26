@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Rock, Paper, Scissors!</title>
+    <meta name="description" content="Our first page">
+    <meta name="keywords" content="html tutorial template">
+</head>
+
+<body>
+    <script>
+        console.log("Welcome to a game of Rock, Paper, Scissors! \nTry starting a game by typing 'game(n)' into the console; where 'n' is the number of rounds you want to play. \nGoodluck!")
+        let playerScore = 0;
+        let computerScore = 0;
+        let playCount = 0;
+
+        function playRound() {
+            alert("Let's play Rock, Paper, Scissors!");
+            let userInput = (prompt("Rock, Paper, or Scissors?")).toLowerCase();
+            let computerChoice = getComputerChoice().toLowerCase();
+            
+            if (userInput != null || undefined) {
+                playCount++;
+            }
+
+            if (userInput === computerChoice) {
+                console.log("We picked the same. It's a tie!");
+                playerScore += .5;
+                computerScore += .5;
+                printScore();
+            } else if (userInput === "rock" && computerChoice === "paper") {
+                console.log("I picked paper. You lose!");
+                computerScore++;
+                printScore();
+            } else if (userInput === "rock" && computerChoice === "scissors") {
+                console.log("I picked scissors. You won!");
+                playerScore++;
+                printScore();
+            } else if (userInput === "scissors" && computerChoice === "rock") {
+                console.log("I picked rock. You lose!");
+                computerScore++;
+                printScore();
+            } else if (userInput === "scissors" && computerChoice === "paper") {
+                console.log("I picked paper. You won!");
+                playerScore++;
+                printScore();
+            } else if (userInput === "paper" && computerChoice === "scissors") {
+                console.log("I picked scissors. You lose!");
+                computerScore++;
+                printScore();
+            } else if (userInput === "paper" && computerChoice === "rock") {
+                console.log("I picked rock. You won!");
+                playerScore++;
+                printScore();
+            } else {
+                console.log("Let me know when you want to play!");
+            }
+        }
+
+        function getComputerChoice() {
+            let computerChoice = ["Rock", "Paper", "Scissors"];
+            let randomIndex = Math.floor(Math.random() * computerChoice.length);
+            return computerChoice[randomIndex];
+        }
+
+        function resetScore() {
+            playerScore = playerScore * 0;
+            computerScore = computerScore * 0;
+            playCount = playCount * 0;
+        }
+
+        function printScore() {
+            console.log("Your score: " + playerScore);
+            console.log("My score: " + computerScore);
+            console.log("Play count: " + playCount);
+        }
+
+        function winRate() {
+            return ("Your win rate is: " + parseInt((playerScore / playCount)*100) + "%.");
+        }
+        
+        
+        function game(roundLimit) {
+            if (roundLimit > 0) {
+                resetScore();
+                for (let i = 0; i < roundLimit; i++) {
+                playRound();
+                 }
+
+                if (playerScore > computerScore) {
+                    return ("Congratulations. Winner winner chicken dinner!" + " " + winRate());
+                } else if (playerScore < computerScore) {
+                    return ("Aww. Better luck next time!" + " " + winRate());
+                } else if (playerScore == computerScore) {
+                    return ("Wow. It's a tie!" + " " + winRate());
+                } else {
+                    ("Hmm.. Something's off here.");
+                    
+            } else if (isNaN(roundLimit) || roundLimit === null || roundLimit === undefined) {
+                return("Pick a number!");
+            } else {
+                return("Pick a number!");
+            }
+        }
+    }
+    </script>
+</body>
+
+</html>
