@@ -1,5 +1,5 @@
 This is a Rock, Paper, Scissors project done within the The Odin Project Foundations curriculum.
-It was coded in Javascript can be accessed using a browser's dev tools console.
+It was coded in Javascript and can be accessed/played using a browser's dev tools console.
 Made and tested using the Chrome browser.
 
 # top_rockpaperscissors
