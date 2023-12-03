@@ -19,7 +19,8 @@
             let userInput = (prompt("Rock, Paper, or Scissors?")).toLowerCase();
             let computerChoice = getComputerChoice().toLowerCase();
             
-            if (userInput != null || undefined) {
+            /*if (userInput != null || undefined)*/
+            if (userInput !== null && userInput !== undefined) {
                 playCount++;
             }
 
@@ -64,9 +65,12 @@
         }
 
         function resetScore() {
-            playerScore = playerScore * 0;
+            playerScore = 0;
+            computerScore = 0;
+            playCount = 0;
+            /*playerScore = playerScore * 0;
             computerScore = computerScore * 0;
-            playCount = playCount * 0;
+            playCount = playCount * 0;*/
         }
 
         function printScore() {
@@ -76,12 +80,14 @@
         }
 
         function winRate() {
+             if (playCount > 0) {
             return ("Your win rate is: " + parseInt((playerScore / playCount)*100) + "%.");
+             }  else return("Play count needs to be higher than 0.");
         }
         
         
         function game(roundLimit) {
-            if (roundLimit > 0) {
+            if (typeof roundLimit === "number" && roundLimit > 0) {
                 resetScore();
                 for (let i = 0; i < roundLimit; i++) {
                 playRound();
