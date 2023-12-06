@@ -88,9 +88,6 @@ function game(roundLimit) {
             return ("Aww. Better luck next time!" + " " + winRate());
         } else if (playerScore == computerScore) {
             return ("Wow. It's a tie!" + " " + winRate());
-        } else {
-            ("Hmm.. Something's off here.");
-            
     } else if (isNaN(roundLimit) || roundLimit === null || roundLimit === undefined) {
         return("Pick a number!");
     } else {
