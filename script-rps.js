@@ -71,8 +71,29 @@ for (let i = 0; i <= 4; i++) {
     arrayDrawWW.push(`${basePathWW}${i}.WEBP`);
 }
 
+const arrayWinFE = [];
+const basePathWFE = './cgpt-imgs/win-fire-earth/wfe';
+for (i = 0; i <= 20; i++) {
+    arrayWinFE.push(`${basePathWFE}${i}.WEBP`);
+}
+
+const arrayWinWF= [];
+const basePathWWF = './cgpt-imgs/win-water-fire/wwf';
+for (i = 0; i <= 5; i++) {
+    arrayWinWF.push(`${basePathWWF}${i}.WEBP`);
+}
+
+const arrayWinEW = [];
+const basePathWEW = './cgpt-imgs/win-earth-water/wew';
+for (i = 0; i <= 19; i++) {
+    arrayWinEW.push(`${basePathWEW}${i}.WEBP`);
+}
 
 
+
+
+
+/* Test Array */
 const arrayTester123 = ["dog", "cat", "raccoon"];
 
 
@@ -105,31 +126,37 @@ function playRound(userInput) {
         printScore();
     /* Win/Lose Conditionals */
     } else if (userInput === "earth" && computerChoice === "fire") {
-        /*mainImage.src = getRandomImage(arrayDrawEE);*/
+        mainImage.src = getRandomImage(arrayWinFE);
         console.log("I picked fire. You lose!");
         computerScore++;
         printScore();
     } else if (userInput === "earth" && computerChoice === "water") {
+        mainImage.src = getRandomImage(arrayWinEW);
         console.log("I picked water. You won!");
         playerScore++;
         printScore();
     } else if (userInput === "water" && computerChoice === "earth") {
+        mainImage.src = getRandomImage(arrayWinEW);
         console.log("I picked earth. You lose!");
         computerScore++;
         printScore();
     } else if (userInput === "water" && computerChoice === "fire") {
+        mainImage.src = getRandomImage(arrayWinWF);
         console.log("I picked fire. You won!");
         playerScore++;
         printScore();
     } else if (userInput === "fire" && computerChoice === "water") {
+        mainImage.src = getRandomImage(arrayWinWF);
         console.log("I picked water. You lose!");
         computerScore++;
         printScore();
     } else if (userInput === "fire" && computerChoice === "earth") {
+        mainImage.src = getRandomImage(arrayWinFE);
         console.log("I picked earth. You won!");
         playerScore++;
         printScore();
     } else {
+        mainImage.src = './cgpt-imgs/homepage-img-start/hp3.WEBP';
         console.log("Let me know when you want to play!");
     }
 }
