@@ -39,6 +39,9 @@ earthButton.addEventListener('click', function(e) {
     championPick.textContent = "You picked a champion of Earth."
 });
 
+let championPick = document.querySelector('.champion-pick');
+championPick.textContent = "Who will you pick?"
+
 function resetScore() {
     mainImage.src = './cgpt-imgs/homepage-img-start/hp3.WEBP';
     let printResults = document.querySelector('.result-text');
@@ -47,6 +50,8 @@ function resetScore() {
     computerScore = 0;
     playCount = 0;
     console.log("Score has been reset.");
+    let championPick = document.querySelector('.champion-pick');
+    championPick.textContent = "Who will you pick?"
 }
 resetButton.addEventListener('click', resetScore);
 
