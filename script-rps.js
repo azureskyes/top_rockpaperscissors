@@ -25,16 +25,24 @@ let resetButton = document.querySelector('.reset-score');
 
 fireButton.addEventListener('click',function(e) {
     playRound('fire');
+    let championPick = document.querySelector('.champion-pick');
+    championPick.textContent = "You picked a champion of Fire."
 });
 waterButton.addEventListener('click',function(e) {
     playRound('water');
+    let championPick = document.querySelector('.champion-pick');
+    championPick.textContent = "You picked a champion of Water."
 });
 earthButton.addEventListener('click', function(e) {
     playRound('earth');
+    let championPick = document.querySelector('.champion-pick');
+    championPick.textContent = "You picked a champion of Earth."
 });
 
 function resetScore() {
     mainImage.src = './cgpt-imgs/homepage-img-start/hp3.WEBP';
+    let printResults = document.querySelector('.result-text');
+    printResults.textContent = "Pick your champion."
     playerScore = 0;
     computerScore = 0;
     playCount = 0;
@@ -52,46 +60,72 @@ resetButton.addEventListener('click', resetScore);
     './cgpt-imgs/draw-earth-earth/ee22.WEBP',
 ];*/
 /*Array of Draw Earth Earth*/
+let deeN = 22;
 const arrayDrawEE = [];
 const basePathEE = './cgpt-imgs/draw-earth-earth/ee';
-for (let i = 0; i <= 22; i++) {
+for (let i = 1; i <= deeN; i++) {
     arrayDrawEE.push(`${basePathEE}${i}.WEBP`);
 }
 /*Array of Draw Fire Fire */
+let dffN = 6;
 const arrayDrawFF = [];
 const basePathFF = './cgpt-imgs/draw-fire-fire/ff';
-for (let i = 0; i <= 6; i++) {
+for (let i = 1; i <= dffN; i++) {
     arrayDrawFF.push(`${basePathFF}${i}.WEBP`);
 }
 
 /* Array of Draw Water Water */
+let dwwN = 3;
 const arrayDrawWW = [];
 const basePathWW = './cgpt-imgs/draw-water-water/ww';
-for (let i = 0; i <= 4; i++) {
+for (let i = 1; i <= dwwN; i++) {
     arrayDrawWW.push(`${basePathWW}${i}.WEBP`);
 }
 
+let wfeN = 20;
 const arrayWinFE = [];
 const basePathWFE = './cgpt-imgs/win-fire-earth/wfe';
-for (i = 0; i <= 20; i++) {
+for (i = 1; i <= wfeN; i++) {
     arrayWinFE.push(`${basePathWFE}${i}.WEBP`);
 }
 
+let wwfN = 10;
 const arrayWinWF= [];
 const basePathWWF = './cgpt-imgs/win-water-fire/wwf';
-for (i = 0; i <= 5; i++) {
+for (i = 1; i <= wwfN; i++) {
     arrayWinWF.push(`${basePathWWF}${i}.WEBP`);
 }
 
+let wewN = 19;
 const arrayWinEW = [];
 const basePathWEW = './cgpt-imgs/win-earth-water/wew';
-for (i = 0; i <= 19; i++) {
+for (i = 1; i <= wewN; i++) {
     arrayWinEW.push(`${basePathWEW}${i}.WEBP`);
 }
 
+let printResults = document.querySelector('.result-text');
+    printResults.textContent = "Pick your champion."
 
+function printYouLost() {
+    let printResults = document.querySelector('.result-text');
+    printResults.textContent = "An unfortunate end. Your champion has fallen."
+}
 
+function printYouWon() {
+    let printResults = document.querySelector('.result-text');
+    printResults.textContent = "Victory! Your champion has conquered the enemy."
+}
 
+function printItsATie() {
+    let printResults = document.querySelector('.result-text');
+    printResults.textContent = "It's a stalemate. Your champion clinched a draw."
+}
+
+function logPlayerWin() {
+    let playerScoreDOM = document.querySelector('.player-score');
+    let playerScoreTxt = document.createTextNode(playerScore);
+    playerScoreDOM.appendChild(playerScoreTxt);
+}
 
 /* Test Array */
 const arrayTester123 = ["dog", "cat", "raccoon"];
@@ -108,18 +142,21 @@ function playRound(userInput) {
     /* Draw Conditionals */
     if (userInput === "earth" && computerChoice === "earth") {
         mainImage.src = getRandomImage(arrayDrawEE);
+        printItsATie();
         console.log("We picked the same. It's a tie!");
         playerScore += .5;
         computerScore += .5;
         printScore();
     } else if (userInput === "fire" && computerChoice === "fire") {
         mainImage.src = getRandomImage(arrayDrawFF);
+        printItsATie();
         console.log("We picked the same. It's a tie!");
         playerScore += .5;
         computerScore += .5;
         printScore();
     } else if (userInput === "water" && computerChoice === "water") {
         mainImage.src = getRandomImage(arrayDrawWW);
+        printItsATie();
         console.log("We picked the same. It's a tie!");
         playerScore += .5;
         computerScore += .5;
@@ -127,37 +164,44 @@ function playRound(userInput) {
     /* Win/Lose Conditionals */
     } else if (userInput === "earth" && computerChoice === "fire") {
         mainImage.src = getRandomImage(arrayWinFE);
+        printYouLost();
         console.log("I picked fire. You lose!");
         computerScore++;
         printScore();
     } else if (userInput === "earth" && computerChoice === "water") {
         mainImage.src = getRandomImage(arrayWinEW);
+        printYouWon()
         console.log("I picked water. You won!");
         playerScore++;
         printScore();
     } else if (userInput === "water" && computerChoice === "earth") {
         mainImage.src = getRandomImage(arrayWinEW);
+        printYouLost()
         console.log("I picked earth. You lose!");
         computerScore++;
         printScore();
     } else if (userInput === "water" && computerChoice === "fire") {
         mainImage.src = getRandomImage(arrayWinWF);
+        printYouWon()
         console.log("I picked fire. You won!");
         playerScore++;
         printScore();
     } else if (userInput === "fire" && computerChoice === "water") {
         mainImage.src = getRandomImage(arrayWinWF);
+        printYouLost()
         console.log("I picked water. You lose!");
         computerScore++;
         printScore();
     } else if (userInput === "fire" && computerChoice === "earth") {
         mainImage.src = getRandomImage(arrayWinFE);
+        printYouWon()
         console.log("I picked earth. You won!");
         playerScore++;
         printScore();
     } else {
         mainImage.src = './cgpt-imgs/homepage-img-start/hp3.WEBP';
         console.log("Let me know when you want to play!");
+
     }
 }
 
