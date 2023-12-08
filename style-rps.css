@@ -1,0 +1,28 @@
+* {
+    font-family: -apple-system, San Fransisco, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.result-img {
+    border-radius: 50px;
+}
+
+button {
+    border-radius: 20px;
+    border: none;
+    background: none;
+    padding: 0;
+
+}
+
+.option1-fireknight, .option2-waterknight,
+.option3-earthknight {
+    width: 339px;
+    border-radius: 25px;
+}
+
+.reset-score {
+    width: 100px;
+    height: 100px;
+    border: 2px;
+    padding: 2px;
+}
