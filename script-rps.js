@@ -53,7 +53,8 @@ function resetScore() {
     playCount = 0;
     console.log("Score has been reset.");
     let championPick = document.querySelector('.champion-pick');
-    championPick.textContent = "Who will you pick?"
+    championPick.textContent = "Who will you pick?";
+    gameLogDOM();
 }
 resetButton.addEventListener('click', resetScore);
 
