@@ -23,6 +23,8 @@ let earthButton = document.querySelector('.option3-earth');
 
 let resetButton = document.querySelector('.reset-score');
 
+
+
 fireButton.addEventListener('click',function(e) {
     playRound('fire');
     let championPick = document.querySelector('.champion-pick');
@@ -54,6 +56,15 @@ function resetScore() {
     championPick.textContent = "Who will you pick?"
 }
 resetButton.addEventListener('click', resetScore);
+
+function gameLogDOM() {
+    let playerScoreDOM = document.querySelector('.player-score');
+    playerScoreDOM.textContent = "Player Score:" + playerScore;
+    let computerScoreDOM = document.querySelector('.computer-score');
+    computerScoreDOM.textContent = "Computer Score:" + computerScore;
+}
+
+
 
 /* Array of output images */
 /*const arrayDrawEE = [
@@ -126,11 +137,12 @@ function printItsATie() {
     printResults.textContent = "It's a stalemate. Your champion clinched a draw."
 }
 
-function logPlayerWin() {
+/*function logPlayerWin() {
     let playerScoreDOM = document.querySelector('.player-score');
     let playerScoreTxt = document.createTextNode(playerScore);
     playerScoreDOM.appendChild(playerScoreTxt);
 }
+*/
 
 /* Test Array */
 const arrayTester123 = ["dog", "cat", "raccoon"];
@@ -152,6 +164,7 @@ function playRound(userInput) {
         playerScore += .5;
         computerScore += .5;
         printScore();
+        gameLogDOM();
     } else if (userInput === "fire" && computerChoice === "fire") {
         mainImage.src = getRandomImage(arrayDrawFF);
         printItsATie();
@@ -216,6 +229,7 @@ function printScore() {
     console.log("Your score: " + playerScore);
     console.log("My score: " + computerScore);
     console.log("Play count: " + playCount);
+    gameLogDOM();
 }
 
 function winRate() {
