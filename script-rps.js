@@ -55,6 +55,8 @@ function resetScore() {
     let championPick = document.querySelector('.champion-pick');
     championPick.textContent = "Who will you pick?";
     gameLogDOM();
+    winAnnounceResetDOM();
+    
 }
 resetButton.addEventListener('click', resetScore);
 
@@ -92,6 +94,7 @@ for (let i = 1; i <= dffN; i++) {
 }
 
 /* Array of Draw Water Water */
+/* 'let' variables value determined by number of image files in archive */
 let dwwN = 3;
 const arrayDrawWW = [];
 const basePathWW = './cgpt-imgs/draw-water-water/ww';
@@ -165,7 +168,6 @@ function playRound(userInput) {
         playerScore += .5;
         computerScore += .5;
         printScore();
-        gameLogDOM();
     } else if (userInput === "fire" && computerChoice === "fire") {
         mainImage.src = getRandomImage(arrayDrawFF);
         printItsATie();
@@ -224,13 +226,32 @@ function playRound(userInput) {
     }
 }
 
+function winAnnounceResetDOM() {
+    let victorAnnounce = document.querySelector(".win-announce");
+    victorAnnounce.textContent = `Who shall prevail?`;
+}
 
+function winAnnounceDOM(e) {
+    let victorAnnounce = document.querySelector(".win-announce");
+    if ((playerScore == e) && (computerScore == e)) {
+        victorAnnounce.textContent = `Both players have achieved a draw to ${e} points.`;
+    } else if ((playerScore >= e) && (playerScore > computerScore)) {
+        victorAnnounce.textContent = `You beat the opponent to a score of ${e} points.`;
+    } else if ((computerScore >= e) && (computerScore > playerScore)) {
+        victorAnnounce.textContent = `The enemy won to the score of ${e} points.`;
+    } else if ((playerScore < e) && (computerScore < e)) {
+        victorAnnounce.textContent = `Who will be the first to achieve a score of ${e}?`;
+    } else {
+        return;
+    }
+}
 
 function printScore() {
     console.log("Your score: " + playerScore);
     console.log("My score: " + computerScore);
     console.log("Play count: " + playCount);
     gameLogDOM();
+    winAnnounceDOM(5);
 }
 
 function winRate() {
