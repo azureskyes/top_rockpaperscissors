@@ -62,9 +62,9 @@ resetButton.addEventListener('click', resetScore);
 
 function gameLogDOM() {
     let playerScoreDOM = document.querySelector('.player-score');
-    playerScoreDOM.textContent = "Player Score:" + playerScore;
+    playerScoreDOM.textContent = "Player Score: " + playerScore;
     let computerScoreDOM = document.querySelector('.computer-score');
-    computerScoreDOM.textContent = "Computer Score:" + computerScore;
+    computerScoreDOM.textContent = "Computer Score: " + computerScore;
 }
 
 
